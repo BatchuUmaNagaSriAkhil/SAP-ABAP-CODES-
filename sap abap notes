@@ -1,0 +1,20 @@
+*&---------------------------------------------------------------------*
+*& Report ZMARK_LIST
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZMARK_LIST.
+PARAMETERS :NAME  TYPE string,
+              UID  TYPE string,
+              SUBJECT1(10) TYPE I,
+              SUBJECT2(10) TYPE I,
+              SUBJECT3(10) TYPE I,
+              SUBJECT4(10) TYPE I,
+              SUBJECT5(10) TYPE I.
+DATA :TOTAL(10) TYPE I,
+      PERCENTAGE type p.
+TOTAL = SUBJECT1 + SUBJECT2 + SUBJECT3 + SUBJECT4 + SUBJECT5.
+PERCENTAGE = TOTAL / 5.
+WRITE : / NAME , SUBJECT1 , SUBJECT2 , SUBJECT3 ,SUBJECT4 , SUBJECT5.
+WRITE : /'TOTAL_SCORE:',TOTAL ,
+      /'PERCENTAGE:', PERCENTAGE.
