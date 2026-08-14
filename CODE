@@ -1,0 +1,43 @@
+*&---------------------------------------------------------------------*
+*& Report ZINTERVIEWS
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZINTERVIEWS.
+PARAMETERS : NAME(15) TYPE C,
+             ROUND_1  TYPE I,
+             ROUND_2  TYPE I.
+
+
+DATA : TOTALS TYPE I,
+      AVERAGE1 TYPE I,
+      AVERAGE2 TYPE I,
+      TOTAL_RESULTS TYPE I.
+
+
+AVERAGE1 = 25.
+AVERAGE2 = 15.
+TOTALS = ( ROUND_1 + ROUND_2  ) / 2.
+
+IF TOTALS > AVERAGE1.
+     PARAMETERS : ROUND_3 TYPE I.
+     TOTAL_RESULTS = ( ROUND_3 + TOTALS ) / 2.
+      IF TOTAL_RESULTS > AVERAGE1.
+        WRITE : / 'YOU ARE SELECTED'.
+        ELSE .
+        WRITE : /'YOU ARE NOT SELECTED'.
+      ENDIF.
+
+
+ELSEIF TOTALS > AVERAGE2.
+     PARAMETERS : CHANCE TYPE I.
+     DATA : RESULT_2 TYPE I.
+     RESULT_2 = ( TOTALS + CHANCE ) / 2 .
+   IF RESULT_2 > AVERAGE1.
+      WRITE : /'YOU ARE SELECTED FOR ROUND 3'.
+    ELSE .
+       WRITE : /'YOU ARE NOT SELECTED FOR NEXT ROUND'.
+    ENDIF.
+ELSE .
+   WRITE : /'YOU ARE NOT SELECTED'.
+ENDIF.
